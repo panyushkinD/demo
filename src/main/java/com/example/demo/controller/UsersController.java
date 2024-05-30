@@ -14,7 +14,9 @@ import java.util.List;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @AllArgsConstructor
 @RequestMapping("/api/v1/main")
+
 public class UsersController {
+
     private final UsersService usersService;
 
     @GetMapping(value = "/all-users")
@@ -28,5 +30,9 @@ public class UsersController {
     @GetMapping(value = "/find-users/{id}")
     public Users usersFind(@PathVariable int id) {
         return usersService.getUserById(id);
+    }
+    @DeleteMapping(value = "/delete-users/{id}")
+    public Users usersDelete(@PathVariable int id) {
+        return usersService.deleteUsersById(id);
     }
 }

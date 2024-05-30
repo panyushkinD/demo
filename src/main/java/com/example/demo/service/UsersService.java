@@ -49,4 +49,7 @@ public class UsersService {
                 .build();
         usersRepository.save(insertUser);
     }
+    public Users deleteUsersById(int id) {
+        return usersRepository.deleteById(id);
+    }
 }

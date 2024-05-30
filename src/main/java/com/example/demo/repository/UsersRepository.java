@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface UsersRepository extends JpaRepository<Users,Integer> {
     Users findUsersById (int id);
+    Users deleteById (int id);
 
 
 }
