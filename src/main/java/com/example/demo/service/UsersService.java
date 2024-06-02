@@ -49,7 +49,29 @@ public class UsersService {
                 .build();
         usersRepository.save(insertUser);
     }
+
     public Users deleteUsersById(int id) {
         return usersRepository.deleteById(id);
+
+    }
+
+    public Users updateUser(int id, UsersRequestDto usersRequestDto) {
+        Users existingUser = usersRepository.findUsersById(id);
+        GenderName findGenderById = genderRepository.findById(usersRequestDto.getGender()).get();
+
+        if (existingUser != null) {
+            existingUser.setFirstName(usersRequestDto.getFirstName());
+            existingUser.setLastName(usersRequestDto.getLastName());
+            existingUser.setPatronymicName(usersRequestDto.getPatronymicName());
+            existingUser.setLogin(usersRequestDto.getLogin());
+            existingUser.setPassword(usersRequestDto.getPassword());
+            existingUser.setAge(usersRequestDto.getAge());
+            existingUser.setGenderName(findGenderById);
+            return usersRepository.save(existingUser);
+        } else {
+            System.out.println("Ид не найден");
+        }
+
+        return existingUser;
     }
 }

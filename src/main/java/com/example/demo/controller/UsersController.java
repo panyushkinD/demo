@@ -23,16 +23,24 @@ public class UsersController {
     public List<UsersResponseDto> getAllUsers() {
         return usersService.getAll();
     }
+
     @PostMapping(value = "/add-users")
     public void addUser(@RequestBody UsersRequestDto usersRequestDto) {
         usersService.addNewUser(usersRequestDto);
     }
+
     @GetMapping(value = "/find-users/{id}")
     public Users usersFind(@PathVariable int id) {
         return usersService.getUserById(id);
     }
+
     @DeleteMapping(value = "/delete-users/{id}")
     public Users usersDelete(@PathVariable int id) {
         return usersService.deleteUsersById(id);
+    }
+
+    @PutMapping(value = "/update-user/{id}")
+    public Users updateUser(@PathVariable int id, @RequestBody  UsersRequestDto usersRequestDto) {
+        return usersService.updateUser(id, usersRequestDto);
     }
 }
