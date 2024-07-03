@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsersRequestDto {
+    private int id;
     private String lastName;
     private String firstName;
     private String patronymicName;

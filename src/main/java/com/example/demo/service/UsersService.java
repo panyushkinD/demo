@@ -20,6 +20,7 @@ public class UsersService {
     public List<UsersResponseDto> getAll() {
         return usersRepository.findAll().stream().map(
                 users -> UsersResponseDto.builder()
+                        .id(users.getId())
                         .firstName(users.getFirstName())
                         .lastName(users.getLastName())
                         .patronymicName(users.getPatronymicName())
